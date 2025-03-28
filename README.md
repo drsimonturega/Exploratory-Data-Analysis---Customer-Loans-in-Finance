@@ -17,7 +17,7 @@ Currently I work for a large financial institution, where managing loans is a cr
 ## Setting up conda environment
 We set up the conda encironment, I am including instruction of how I do this, later we may want to clone the envirnomant, ```conda create -n loans_in_fin  python=3.10```, we activate our conda environment ```conda activate loans_in_fin```. Next we install packages we will need.
 
-``` conda -c install pandas numpy```
+``` conda -c install pandas numpy psycopg2 sqlalchemy pyyaml```
 
 ## database set up
 
