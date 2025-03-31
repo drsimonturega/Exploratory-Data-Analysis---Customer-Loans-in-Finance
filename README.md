@@ -18,6 +18,8 @@ Currently I work for a large financial institution, where managing loans is a cr
 ### Extracting the loans data from the cloud
 Initaly the ```csv_check(self, csv_name)``` method checks if the loads data *.csv is present if not it downloads it from the database, infuture this could be devloped to check for updates. Code was written to connect to cloud AWS hosted database with a python scipt using the psycopg2/sqlalchemy libraries, from the database the "loans_payments" table is extracted to a df then saved as a *csv file. 
 
+ ![Alt](/init_img.png "__init_ magic method")
+
 ### Examining data
 The ```loans_payment.csv``` is loaded to a data frame.
 
