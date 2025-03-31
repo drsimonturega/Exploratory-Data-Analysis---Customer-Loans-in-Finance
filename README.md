@@ -4,7 +4,6 @@
 ## Contents
 * Introduction
 * Code development
-* Milestones
 * Installation instructions
 * Usage instructions
 * File structure of the project
@@ -17,7 +16,10 @@ Currently I work for a large financial institution, where managing loans is a cr
 ## Code development
 
 ### Extracting the loans data from the cloud
-Iniitaly the ```csv_check(self, csv_name)``` method Code was written to connect to cloud AWS hosted database with a python scipt using the psycopg2/sqlalchemy libraries, from the database the "loans_payments" table is extracted to a df then saved as a *csv file. 
+Initaly the ```csv_check(self, csv_name)``` method checks if the loads data *.csv is present if not it downloads it from the database, infuture this could be devloped to check for updates. Code was written to connect to cloud AWS hosted database with a python scipt using the psycopg2/sqlalchemy libraries, from the database the "loans_payments" table is extracted to a df then saved as a *csv file. 
+
+### Examining data
+The ```loans_payment.csv``` is loaded to a data frame.
 
 ## Installation instructions
 
