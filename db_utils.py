@@ -7,7 +7,7 @@ import numpy as np
 import os
 import pandas as pd
 from sqlalchemy import create_engine
-from sqlalchemy import inspect
+from sqlalchemy import inspectl
 import yaml
 
 
@@ -15,7 +15,8 @@ class RDSDatabaseConnector:
     def __init__(self,csv_name):
         self.cred_file = "credentials.yaml"
         self.csv_name = csv_name
-        self.csv_check(self.csv_name)
+        #self.csv_check(self.csv_name)
+        #self.cred_load(self.cred_file)
        
        
     def cred_load(self, cred_file):
@@ -115,10 +116,11 @@ class RDSDatabaseConnector:
         self.cred_load(self.cred_file)
         self.list_db_tables()
         self.read_rds_table()
-        self.csv_out()
+        # changed this does it still work
+        self.csv_out(csv_name)
         self.csv_load(csv_name)
 
-    def csv_out(self):
+    def csv_out(self, csv_name):
         """
         Saves the extracted table as a *.csv file
 
@@ -128,7 +130,7 @@ class RDSDatabaseConnector:
         csv_name -- name of *.csv file where database table is stored
         """
         try: #output results
-            self.loan_payments.to_csv(f'{self.csv_name}.csv',index=False)
+            self.loan_payments.to_csv(f'{csv_name}.csv',index=False)
         except PermissionError:
             print('The file we are trying to open may be open in another \
             program, please close and try again!')
@@ -159,5 +161,9 @@ class RDSDatabaseConnector:
 if __name__ == "__main__":
     # database and data frame operations 
     up_ld = RDSDatabaseConnector("loan_payments")
+    print(up_ld.list_db_tables())
+    print(up_ld.read_rds_table())
+    print(up_ld.csv_out())
+    print(up_ld.csv_load("loan_payments"))
     
     

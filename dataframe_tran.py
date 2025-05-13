@@ -23,19 +23,18 @@ class DataFrameTransform:
         
     def drop_col(self, curr_df, inv_col):
         """
-        Provides statistics  for catagorical data columns from a
-        df, presenting them as a table and saving as 'catog_stats.csv'
+        Drops columns provided in a list from given dataframe
 
         Keyword arguments:
         self -- variables that store information unique to each 
         object created from the class
-        df_curr -- current df
-        inv_cols -- list of columns for investigation
+        curr_df -- current df
+        inv_col -- list of columns for investigation
         """
         curr_df = curr_df.drop(columns = inv_col, axis=1, inplace=True)
         return curr_df
 
-    def impute_df_col(self, curr_df, median_cols, mean_cols):
+    def inpute_df_median_col(self, curr_df, median_cols):
         """
         Converts columns with type pd object to datetime
 
@@ -43,24 +42,18 @@ class DataFrameTransform:
         self -- variables that store information unique to each 
         object created from the class
         curr_df -- current df as a df not string
-        new_df -- name of new df 
         median_cols -- list containing columns that will be replaced with
         the median of the column
-        mean_cols -- list containing columns that will be replaced with
-        the mean of the column
         """
         #make new data frame
         new_df = curr_df.copy(deep=True)        
         # inputeing cols thats will replace NULL values with the median
         for column in median_cols:
             new_df[column] = new_df[column].fillna(new_df[column].median())
-        # inputeing cols thats will be replace NULLL values with the median
-        for column in mean_cols:
-            new_df[column] = new_df[column].fillna(new_df[column].mean())
-        self.inpute_dates(new_df)
+        #self.inpute_dates(new_df)
         return new_df
-    
-    def inpute_dates(self, curr_df):
+
+    def inpute_df_mean_col(self, curr_df, mean_cols):
         """
         Converts columns with type pd object to datetime
 
@@ -68,7 +61,27 @@ class DataFrameTransform:
         self -- variables that store information unique to each 
         object created from the class
         curr_df -- current df as a df not string
+        mean_cols -- list containing columns that will be replaced with
+        the mean of the column
         """
+        #make new data frame
+        new_df = curr_df.copy(deep=True)        
+        # inputeing cols thats will be replace NULLL values with the median
+        for column in mean_cols:
+            new_df[column] = new_df[column].fillna(new_df[column].mean())
+        #self.inpute_dates(new_df)
+        return new_df
+    
+    def inpute_dates(self, curr_df):
+        """
+        inpute null dates with a selected alyernative
+
+        Keyword arguments:
+        self -- variables that store information unique to each 
+        object created from the class
+        curr_df -- current df as a df not string
+        """
+        # needs refactoring ?
         # inputeing date cols thats will replace NULL values with the a
         # point of reference date 
         # "lastpayment" replaced with "issue date" 
