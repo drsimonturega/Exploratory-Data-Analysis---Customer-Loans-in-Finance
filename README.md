@@ -32,7 +32,16 @@ We set up the conda encironment, I am including instruction of how I do this, la
 
 ## Usage instructions
 
+The exploritory data analysis of the "lones in finance" data set, is run in a jupyter note book ```EDA.iypnb``` running python 10.6 with in a conda environment loans_in_fin. The note book is run on Microsofts VSCode on a laprunning ubuntu linux.
+
 ## File structure of the project
+
+There are five python files, ```dat_tran.py```, ```datframe_inf.py```, ```datframe_tran.py```, ```plotter.py``` and ```db_utils.py``` that conatin the methods used in this propject. The each file contains a class of related methods for a specific part of the analysis the methods are run in a jupter note book ```EDA.iypnb```.
+
+The ```db_utils.py``` contains a cass ```RDSDatabaseConnector``` that has a method for extracting the lone data saveing it as a *.csv file opening it as a Pandas DataFrame. The ``dat_tran.py``` file contains the class DataTransform with methods for converting the types of columns and removing unwanted characters. A third pyrthon file ```datframe_inf_.py``` houses the class DataFrameInfo, this class contains methods for running some statistical analysis and saving the numerical out put as *.csv files when desired.  The python file ```datframe_tran.py``` contains the class DataFrameTransform with methods for cleaning data, imputing missing data, correcting skewed data and removing highly correlated columns from the data. The fith file ```plotter.py``` containd the Plotter class that has methods for plotting the data we explore in this project.
+
+The exploritory data analysis is runs in my jupyter note book ```EDA.iypnb```.
+
 
 ## License information
 
