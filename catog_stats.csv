@@ -1,0 +1,5 @@
+stat,grade,sub_grade,home_ownership,verification_status,loan_status,payment_plan,purpose,application_type
+count,54231,54231,54231,54231,54231,54231,54231,54231
+unique,7,35,5,3,9,2,14,1
+top,B,B3,MORTGAGE,Verified,Fully Paid,n,debt_consolidation,INDIVIDUAL
+freq,16369,3641,26923,20782,27037,54230,29593,54231
