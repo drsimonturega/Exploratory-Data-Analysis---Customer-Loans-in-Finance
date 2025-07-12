@@ -11,7 +11,7 @@ class DataFrameInfo:
     def __init__(self):
         #self.curr_df = curr_df
         print("init_DataFrameInfo")
-        
+
 
     
     def percent_na(self, curr_df, print=False):
@@ -23,11 +23,8 @@ class DataFrameInfo:
         object created from the class
         df_current -- current df
         """
-        #percent_null = pd.DataFrame
         percent_null = curr_df.isna().mean() * 100
         # calculate % na
-        #print("percentage of missing values in each column:")
-        #percent_null = percent_null.to_frame()
         percent_null = self.format_series(percent_null, "%_NULL", print)
         return percent_null
     
@@ -40,19 +37,28 @@ class DataFrameInfo:
         object created from the class
         df_current -- current df
         """
-        #percent_null = pd.DataFrame
         curr_dtypes = curr_df.dtypes
         self.format_series(curr_dtypes, "dtype")
         return curr_dtypes
     
     def format_series(self, curr_series, curr_val, print=False):
+        """
+        Formats current series tidying cols wih option to produce table
+
+        Keyword arguments:
+        self -- variables that store information unique to each 
+        object created from the class
+        df_curr_series -- current series 
+        curr_val = current value used in renaming
+        """
+        #not used in this project but intestesting for future use
         curr_series = curr_series.to_frame()
         curr_series['data_col'] = curr_series.index
         col = curr_series.pop('data_col')
         curr_series.insert(0, col.name, col)
         curr_series = curr_series.reset_index(drop=True)
-        curr_series = curr_series.rename(columns={curr_series.columns[1]: curr_val})
-        fun_file_name =  str(curr_series)
+        curr_series = curr_series.rename(
+            columns={curr_series.columns[1]: curr_val})
         if print == True:
             self.build_stat_tab( curr_series)
         return curr_series
@@ -60,9 +66,16 @@ class DataFrameInfo:
 
     
     def desc_all_cols(self, curr_df):
+        """
+        Prints data types of current df
+
+        Keyword arguments:
+        self -- variables that store information unique to each 
+        df_current -- current df
+        """
+        #not used in this project but intestesting for future use
         # Data types of all columns
         print(f'{curr_df.dtypes}')
-        #print(f'{type(curr_df)}')
         return
 
     def desc_stats(self, curr_df ,index_lst ,inv_cols):
@@ -81,11 +94,16 @@ class DataFrameInfo:
         df_tab = self.build_df_stats(index_lst, inv_cols)
         # populate rows one column at a time
         for col_num in range(0,len(inv_cols)):
-            df_tab.iloc[0, (col_num + 1)] = st.median(curr_df[inv_cols[col_num]])
-            df_tab.iloc[1, (col_num + 1)] = np.std(curr_df[inv_cols[col_num]])
-            df_tab.iloc[2, (col_num + 1)] = np.mean(curr_df[inv_cols[col_num]])
+            df_tab.iloc[0, (col_num + 1)] = st.median(
+                curr_df[inv_cols[col_num]])
+            df_tab.iloc[1, (col_num + 1)] = np.std(
+                curr_df[inv_cols[col_num]])
+            df_tab.iloc[2, (col_num + 1)] = np.mean(
+                curr_df[inv_cols[col_num]])
         # think about table numbering
-        print("Table, Descriptive statistics for our continuous data coumns\n")
+        #provide output for furether use
+        print("Table, Descriptive statistics for our continuous \
+            data coumns\n")
         self.build_stat_tab(df_tab)
         self.save_stat_tab(df_tab, 'desc_stats')
         return
@@ -110,6 +128,7 @@ class DataFrameInfo:
             cat_desc = curr_df[inv_cols[col_num]].describe()
             for stat_num in range(0,len(stat_lst)):
                 df_tab.iloc[stat_num, (col_num + 1)] = cat_desc.iloc[stat_num]
+        #provide output for furether use
         print("Table 2, Statistics for our data columns\n")
         self.build_stat_tab(df_tab)
         self.save_stat_tab(df_tab, out_name)
@@ -169,7 +188,7 @@ class DataFrameInfo:
         Keyword arguments:
         self -- variables that store information unique to each 
         object created from the class
-        out_df -- output df for printing and saving
+        out_df -- output df for printing
         """
         # design and print table
         stat_tab = tabulate(out_df, headers = out_df.columns,
@@ -205,7 +224,8 @@ class DataFrameInfo:
         print(f'length is {len(cat_desc)}')
         print(f'first item in serise is {cat_desc.iloc[0]}\n')
         stat_lst = cat_desc.index.values.tolist()
-        print(f'Acessesing the data;\nindex as a list "stat_lst",\n{stat_lst}')
+        print(f'Acessesing the data;\nindex as a list "stat_lst", \
+            \n{stat_lst}')
         print(f'first item in the list is {stat_lst[0]}\n')
         return
     
@@ -226,13 +246,15 @@ class DataFrameInfo:
         print(f'length is {len(inv_obj)}')
         print(f'first item in serise is {inv_obj.iloc[0]}\n')
         stat_lst = inv_obj.index.values.tolist()
-        print(f'Acessesing the data;\nindex as a list "stat_lst",\n{stat_lst}')
+        print(f'Acessesing the data;\nindex as a list "stat_lst", \
+            \n{stat_lst}')
         print(f'first item in the list is {stat_lst[0]}\n')
         return
     
     def col_to_boxplot(self, curr_df, single_col):
         """
         Provides a boxplot from a single column from a dataframe
+        mainly for diagnosic use which it is in DataFrameInfo() Class
 
         Keyword arguments:
         self -- variables that store information unique to each 

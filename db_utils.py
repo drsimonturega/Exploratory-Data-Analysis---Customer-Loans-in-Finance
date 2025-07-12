@@ -7,7 +7,7 @@ import numpy as np
 import os
 import pandas as pd
 from sqlalchemy import create_engine
-from sqlalchemy import inspectl
+from sqlalchemy import inspect
 import yaml
 
 
@@ -44,6 +44,7 @@ class RDSDatabaseConnector:
         object created from the class
         """
         # connect to database using credientals loaded
+        # think about how these can be were shortened
         self.engine = create_engine(f"postgresql+psycopg2://{self.cred_dict['RDS_USER']}:{self.cred_dict['RDS_PASSWORD']}@{self.cred_dict['RDS_HOST']}:{self.cred_dict['RDS_PORT']}/{self.cred_dict['RDS_DATABASE']}")
         self.engine.execution_options(isolation_level='AUTOCOMMIT').connect()
         self.engine.connect()
@@ -96,7 +97,8 @@ class RDSDatabaseConnector:
             print(f'loading file {csv_name}.csv')
             self.csv_load(csv_name)
         else:
-            print(f'Conecting to db writing {self.csv_name}.csv and loading to df')
+            print(f'Conecting to db writing {self.csv_name}.csv \
+                and loading to df')
             self.download_db_table(self, csv_name)
         return
     
@@ -119,6 +121,7 @@ class RDSDatabaseConnector:
         # changed this does it still work
         self.csv_out(csv_name)
         self.csv_load(csv_name)
+        return
 
     def csv_out(self, csv_name):
         """
@@ -161,9 +164,9 @@ class RDSDatabaseConnector:
 if __name__ == "__main__":
     # database and data frame operations 
     up_ld = RDSDatabaseConnector("loan_payments")
-    print(up_ld.list_db_tables())
-    print(up_ld.read_rds_table())
-    print(up_ld.csv_out())
-    print(up_ld.csv_load("loan_payments"))
+    #print(up_ld.list_db_tables())
+    #print(up_ld.read_rds_table())
+    #print(up_ld.csv_out())
+    #print(up_ld.csv_load("loan_payments"))
     
     

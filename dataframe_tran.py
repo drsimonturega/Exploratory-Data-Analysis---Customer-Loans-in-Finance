@@ -15,7 +15,6 @@ from statsmodels.graphics.gofplots import qqplot
 from tabulate import tabulate
 
 
-
 class DataFrameTransform:
     def __init__(self):
         #self.curr_df = curr_df
@@ -36,26 +35,28 @@ class DataFrameTransform:
 
     def inpute_df_median_col(self, curr_df, median_cols):
         """
-        Converts columns with type pd object to datetime
+        Inputeing cols thats will replace NULL values with the median
+        and returning a new df
 
         Keyword arguments:
         self -- variables that store information unique to each 
         object created from the class
         curr_df -- current df as a df not string
-        median_cols -- list containing columns that will be replaced with
-        the median of the column
+        median_cols -- list containing columns that will be replaced
+        with the median of the column
         """
         #make new data frame
         new_df = curr_df.copy(deep=True)        
         # inputeing cols thats will replace NULL values with the median
         for column in median_cols:
-            new_df[column] = new_df[column].fillna(new_df[column].median())
-        #self.inpute_dates(new_df)
+            new_df[column] = new_df[column].fillna(
+                new_df[column].median())
         return new_df
 
     def inpute_df_mean_col(self, curr_df, mean_cols):
         """
-        Converts columns with type pd object to datetime
+        Inputeing cols thats will replace NULL values with the mean
+        and returning a new df
 
         Keyword arguments:
         self -- variables that store information unique to each 
@@ -66,15 +67,16 @@ class DataFrameTransform:
         """
         #make new data frame
         new_df = curr_df.copy(deep=True)        
-        # inputeing cols thats will be replace NULLL values with the median
+        # inputeing cols thats will be replace NULLL values 
+        # with the median
         for column in mean_cols:
-            new_df[column] = new_df[column].fillna(new_df[column].mean())
-        #self.inpute_dates(new_df)
+            new_df[column] = new_df[column].fillna(
+                new_df[column].mean())
         return new_df
     
     def inpute_dates(self, curr_df):
         """
-        inpute null dates with a selected alyernative
+        inpute null dates with a selected alternative
 
         Keyword arguments:
         self -- variables that store information unique to each 
@@ -85,24 +87,15 @@ class DataFrameTransform:
         # inputeing date cols thats will replace NULL values with the a
         # point of reference date 
         # "lastpayment" replaced with "issue date" 
-        curr_df["last_payment_date"] = curr_df["last_payment_date"].fillna(curr_df["issue_date"])
+        curr_df["last_payment_date"] = curr_df[
+            "last_payment_date"].fillna(curr_df["issue_date"])
         # "next_payment" replaced with "last_payment"
-        curr_df["next_payment_date"] = curr_df["next_payment_date"].fillna(curr_df["last_payment_date"])
+        curr_df["next_payment_date"] = curr_df[
+            "next_payment_date"].fillna(curr_df["last_payment_date"])
         # "next_payment" replaced with "last_payment"
-        curr_df["last_credit_pull_date"] = curr_df["last_credit_pull_date"].fillna(curr_df["issue_date"])
+        curr_df["last_credit_pull_date"] = curr_df[
+            "last_credit_pull_date"].fillna(curr_df["issue_date"])
         return curr_df
-
-        
-        
-
-                
-
-        
-
-
-
-        
-        return 
     
     def K_2_Test(self, curr_df, curr_col):
         """
@@ -149,11 +142,14 @@ class DataFrameTransform:
         object created from the class
         curr_df -- current df as a df not string
         curr_coll -- single column of interest
+        curr_val -- value thats selects which rows get droped
         """
-        curr_df = curr_df.drop(curr_df[curr_df[curr_col] == curr_val].index)
-        # index is wonky...
+        curr_df = curr_df.drop(curr_df[
+            curr_df[curr_col] == curr_val].index)
+        # index is wonky... keeping this as a comment for now
         #curr_df = curr_df.reset_index()
-        #curr_df = curr_df.drop(curr_df.columns[0], axis=1, inplace=True)
+        #curr_df = curr_df.drop(
+        #   curr_df.columns[0], axis=1, inplace=True)
         return curr_df
     
     def hist_kde_skew(self, data_lst):
@@ -165,8 +161,8 @@ class DataFrameTransform:
         object created from the class
         data_lst -- data as a list
         """
-        #print(f'...\n {curr_col}\n')
-        t1=sns.histplot(data_lst,label="Skewness: %.2f"%(data_lst.skew()), kde=True )
+        t1=sns.histplot(data_lst,label="Skewness: %.2f"%(
+            data_lst.skew()), kde=True )
         t1.legend()
         qq_plot = qqplot(data_lst , scale=1 ,line='q', fit=True)
         plt.show()
@@ -184,7 +180,8 @@ class DataFrameTransform:
         """
         print(f'...\n {curr_col}\n')
         self.hist_kde_skew(curr_df[curr_col])
-        log_col = curr_df[curr_col].map(lambda i: np.log(i) if i > 0 else 0)
+        log_col = curr_df[curr_col].map(lambda i: np.log(i) 
+            if i > 0 else 0)
         self.hist_kde_skew(log_col)
         return
 
@@ -237,9 +234,6 @@ class DataFrameTransform:
         curr_df -- current df as a df not string
         col_lst -- list of columns for transformation
         """
-        #print(f'...\n {curr_col}\n')
-        #self.hist_kde_skew(curr_df[curr_col])
-        #curr_df[col] = [curr_df[col] for col in curr_df.columns pd.Series((stats.boxcox(curr_df[col]))[0])]
         for col in col_lst:
             print(f'{col}')
             boxcox_population = curr_df[col]
@@ -262,9 +256,8 @@ class DataFrameTransform:
         curr_df -- current df as a df not string
         col_lst -- list of columns for transformation
         """
-        #print(f'...\n {curr_col}\n')
-        #self.hist_kde_skew(curr_df[curr_col])
-        #curr_df[col] = [curr_df[col] for col in curr_df.columns pd.Series((stats.yeojohnson(curr_df[col]))[0])]
+        #curr_df[col] = [curr_df[col] for col in curr_df.columns 
+        #   pd.Series((stats.yeojohnson(curr_df[col]))[0])]
         for col in col_lst:
             print(f'{col}')
             yeojohnson_population = curr_df[col]
@@ -286,14 +279,13 @@ class DataFrameTransform:
         curr_df -- current df as a df not string
         col_lst -- list of columns for investigation
         """
-        #[curr_df[col] for col in col_lst curr_df.drop(curr_df[curr_df[col] == 0].index, inplace = True)]
         for col in col_lst:
             curr_df.drop(curr_df[curr_df[col] == 0].index, inplace = True)
         return curr_df
 
     def rm_max_val_outlier(self, curr_df, col_lst):
         """
-        Removes rows where col vales are zero
+        Removes rows where col values are zero
 
         Keyword arguments:
         self -- variables that store information unique to each 
@@ -301,12 +293,13 @@ class DataFrameTransform:
         curr_df -- current df as a df not string
         col_lst -- list of columns for investigation
         """
-        #[curr_df[col] for col in col_lst curr_df.drop(curr_df[curr_df[col] == 0].index, inplace = True)]
         for col in col_lst:
             col_max = curr_df[col].max()
+            #prints some helpfuk values
             print(f'{col} max is {col_max}')
             print(f' df length = {len(curr_df)}')
-            curr_df.drop(curr_df[curr_df[col] == col_max].index, inplace = True)
+            curr_df.drop(curr_df[curr_df[col] == col_max].index, 
+                inplace = True)
             print(f' df length = {len(curr_df)}')
         return curr_df
 
@@ -328,11 +321,85 @@ class DataFrameTransform:
             t_lst = list(df.index.values)
             t_lst.pop(0)
             corr_lst= corr_lst + t_lst
-            #print(corr_lst)
         corr_lst = set(corr_lst)
         print(corr_lst)
         return corr_lst
-    
+
+    def text_anal_col(self, curr_df, column):
+        """
+        A text analysis of a continuos numerical column, this is an 
+        investigative tool
+
+        Keyword arguments:
+        self -- variables that store information unique to each 
+        object created from the class
+        curr_df -- current df as a df not string
+        column -- column of interest
+        """
+        print(f' The column, {column}  has a max of \
+            {curr_df[column].max()} and a min of \
+            {curr_df[column].min()}')
+        print(f' df length = {len(curr_df)}')
+        return
+
+    def catogary_bin(self, curr_df, columns):
+        """
+        Bins catogaries and tidies up df
+
+        Keyword arguments:
+        self -- variables that store information unique to each 
+        object created from the class may want to reuse this
+        curr_df -- current df as a df not string
+        columns -- column of interest
+        """
+        bins = curr_df[columns].unique()
+        temp_f = pd.DataFrame()
+        temp_f = curr_df[columns].value_counts()
+        temp_f = temp_f.to_frame()
+        temp_f.reset_index(inplace=True)
+        temp_f = temp_f.rename(columns={temp_f.columns[0]: "catogary"})
+        temp_f['column'] = columns
+        return temp_f
+
+    def concat_cat_bin(self, curr_df, col_lst):
+        """
+        bins multiple catagoeires
+
+        Keyword arguments:
+        self -- variables that store information unique to each 
+        object created from the class may want to reuse this
+        curr_df -- current df as a df not string
+        col_list -- columns to be concatonated
+        """
+        # bins multiple catagoeires
+        df_binned_cat = pd.DataFrame()
+        for columns in col_lst:
+            temp_f = pd.DataFrame()
+            temp_f = self.catogary_bin(curr_df,columns)
+            df_binned_cat = pd.concat([df_binned_cat, temp_f])
+        #keep this in for now
+        #df_binned_cat.reset_index(drop=True)
+        return df_binned_cat
+
+    def add_perecnt_col(self, new_df, new_col_name, numer, denomin):
+        """
+            Adds a percentage out of 100 rather than a 
+            ratio  in a new df
+
+            Keyword arguments:
+            new_df -- df where you want the new column going 
+            new_col_name -- name of new column as a string e.g. 'count'
+            numerator -- numerator as a df['column'] not string, 
+            e.g. cat_loss_late['count']
+            denominator -- denominator as a df['column'] not string, 
+            e.g. cat_loss_tran_new['count']
+            """
+        new_df[new_col_name] = round((numer/ denomin)*100, 2)
+        #leaving line below as a comment could be separate 
+        # method in same class
+        #new_df.sort_values(by = [new_col_name], axis = 0, 
+        #   inplace= True, ascending = False)
+        return new_df
 
 if __name__ == "__main__":
     # database and data frame operations 

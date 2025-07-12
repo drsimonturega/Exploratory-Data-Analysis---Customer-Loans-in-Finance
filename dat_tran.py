@@ -22,12 +22,13 @@ class DataTransform:
         """
         # converting dates think format
         for c_col in inv_cols:
-            curr_df[c_col] = pd.to_datetime(curr_df[c_col], errors='coerce').dt.strftime('%Y-%m')
+            curr_df[c_col] = pd.to_datetime(curr_df[c_col], 
+            errors='coerce').dt.strftime('%Y-%m')
         return curr_df
     
     def mixed_col_to_num(self, curr_df, inv_cols):
         """
-        Converts columns that are strings to floats
+        Converts columns that are strings(or a mix) to floats
 
         Keyword arguments:
         self -- variables that store information unique to each 
@@ -54,8 +55,10 @@ class DataTransform:
         """
         try:
             for c_col in inv_cols:
-                #removes charaters given in regex can be changed here currently
-                curr_df[c_col] = curr_df[c_col].str.replace(r'("|<|years|year|\+|months|")', '', regex=True)
+                #removes charaters given in this method as regex can be
+                #changed here currently
+                curr_df[c_col] = curr_df[c_col].str.replace(
+                    r'("|<|years|year|\+|months|")', '', regex=True)
         except AttributeError:
             print(f'Possible one of your columns is not type string \
             or this has prevoysly been run on these columns')
@@ -72,7 +75,6 @@ class DataTransform:
         inv_cols -- list of columns for investigation
         """
         for c_col in inv_cols:
-                #removes charaters given in regex can be changed here currently
                 curr_df[c_col] = curr_df[c_col].astype("category")
         return curr_df
      

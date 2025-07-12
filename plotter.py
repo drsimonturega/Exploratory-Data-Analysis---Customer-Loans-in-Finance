@@ -53,14 +53,15 @@ class Plotter:
         post_df -- df post imputeing NULL values
 
         """
-        # this does not work ans could be tricky to get working
-        categorical_features = [col for col in curr_df.columns if col not in cont_lst]
+        # this does not work and could be tricky to get working
+        categorical_features = [col for col in curr_df.columns 
+            if col not in cont_lst]
         sns.set(font_scale=0.7)
         f = pd.melt(curr_df, value_vars=cont_lst)
-        g = sns.FacetGrid(f, col="variable",  col_wrap=3, sharex=False, sharey=False)
-        g = g.map(sns.histplot, "value", label="Skewness: %.2f"%(curr_df.skew()), kde=True )
-
-                   
+        g = sns.FacetGrid(f, col="variable",  col_wrap=3, 
+            sharex=False, sharey=False)
+        g = g.map(sns.histplot, "value", label="Skewness: \
+            %.2f"%(curr_df.skew()), kde=True )
         return 
     
     def grid_hist_kde(self, curr_df, cont_lst):
@@ -74,13 +75,11 @@ class Plotter:
         cont_lst -- list of columns of contiunous data
 
         """
-        #categorical_features = [col for col in curr_df.columns if col not in cont_lst]
         sns.set(font_scale=0.7)
         f = pd.melt(curr_df, value_vars=cont_lst)
-        g = sns.FacetGrid(f, col="variable",  col_wrap=3, sharex=False, sharey=False)
+        g = sns.FacetGrid(f, col="variable",  col_wrap=3, 
+            sharex=False, sharey=False)
         g = g.map(sns.histplot, "value", kde=True )
-
-               
         return  
 
     def categ_feat(self, curr_df, cont_lst):
@@ -95,7 +94,8 @@ class Plotter:
         categorical_features -- list of columns of catagorical data
 
         """
-        categorical_features = [col for col in curr_df.columns if col not in cont_lst]
+        categorical_features = [col for col in curr_df.columns 
+            if col not in cont_lst]
         return categorical_features
 
     def count_categ_data(self, curr_df, cat_lst):
@@ -109,10 +109,11 @@ class Plotter:
         cat_lst -- list of columns of catagorical data
         """
         f = pd.melt(curr_df, value_vars=cat_lst)
-        g = sns.FacetGrid(f, col='variable',  col_wrap=3, sharex=False, sharey=False)
+        g = sns.FacetGrid(f, col='variable',  col_wrap=3, 
+            sharex=False, sharey=False)
         g = g.map(self.countplot, 'value')
-
-
+        return
+        
     def countplot(self, x, **kwargs):
         """
         Preperation for multi count plot
@@ -125,10 +126,8 @@ class Plotter:
         """
         sns.countplot(x=x)
         x=plt.xticks(rotation=90)
-        
+        return     
 
-        
-    
     def q_q_plot(self, curr_df, curr_col):
         """
         Produces a Quantile-Quantile plot on df column
@@ -179,14 +178,11 @@ class Plotter:
         # collect data
         # Compute the correlation matrix
         corr = curr_df.corr()
-
         # Generate a mask for the upper triangle
         mask = np.zeros_like(corr, dtype=np.bool_)
         mask[np.triu_indices_from(mask)] = True
-
         # set thins up for plotting
         cmap = sns.diverging_palette(220, 10, as_cmap=True)
-
         # Draw the heatmap
         sns.heatmap(corr, mask=mask, 
                     square=True, linewidths=.5, annot=False, cmap=cmap)
@@ -194,10 +190,8 @@ class Plotter:
         plt.title(plt_title)
         plt.show()
         return
-    
-    
 
 if __name__ == "__main__":
-# database and data frame operations 
+    # Plotter class to visualise insights from the data
     plot_P = Plotter()
     
