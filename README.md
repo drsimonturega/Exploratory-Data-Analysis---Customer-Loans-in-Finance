@@ -21,7 +21,7 @@ Extracting the loans data from the cloud. Initaly the ```csv_check(self, csv_nam
  ![Alt](/init_img.png "__init_ magic method")
 
 ### Check and convert columns to correct formats
-Taking the data frame extracted from the database this is an initial round of Visualising column data types. It involves Changing column types to a more usable format in columns where this can be anticipated and ensuring that columns are of the correct data type for example checking the categorical data column columns are categorical. This provides a dataframe that is ready for initial analysis. 
+Taking the data frame extracted from the database this is an initial round of Visualising column data types. Using the ```DataTransform()``` class it involves changing column types to a more usable format in columns where this can be anticipated and ensuring that columns are of the correct data type for example checking the categorical data column columns are categorical. This provides a dataframe that is ready for initial analysis. 
 
 ### Getting information from dataframe
 
