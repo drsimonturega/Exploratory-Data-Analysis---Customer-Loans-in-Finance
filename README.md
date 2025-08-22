@@ -29,13 +29,30 @@ Extracting the loans data from the cloud. Initaly the ```csv_check(self, csv_nam
 #### Check and convert columns to correct formats
 Taking the data frame extracted from the database this is an initial round of Visualising column data types. Using the ```DataTransform()``` class it involves changing column types to a more usable format in columns where this can be anticipated and ensuring that columns are of the correct data type for example checking the categorical data column columns are categorical. This provides a dataframe that is ready for initial analysis. 
 
-#### Getting information from dataframe
+### Create a class to get information from the DataFrame
+
+#### Remove/impute missing values in the data
+
+#### Perform transformations on skewed columns
 In this step I take a numerical and catagorical overview of the intire data set using my ```DataFrameTransform()``` class.
+
+#### Dropping overly correlated columns
 
 ### Examining data
 The ```loans_payment.csv``` is loaded to a data frame.
 
 ### Analysis and Visualisation
+#### Current state of the loans
+
+#### Calculating loss
+
+#### Calculating projected loss
+
+#### Possible loss
+
+#### Indicators of loss
+
+
 #### Final data analysis and visualisation
 
 
