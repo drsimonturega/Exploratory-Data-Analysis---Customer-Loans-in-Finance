@@ -26,6 +26,8 @@ Extracting the loans data from the cloud. Initaly the ```csv_check(self, csv_nam
  ![Alt](/init_img.png "__init_ magic method")
 
 ### Exploratory Data Analysis (EDA)
+This milestone involves performing Exploratory Data Analysis (EDA) on the loans data. The main objective of the milestone is to gain a deeper understanding of the data and identify any patterns which might exist.
+
 #### Check and convert columns to correct formats
 Taking the data frame extracted from the database this is an initial round of Visualising column data types. Using the ```DataTransform()``` class it involves changing column types to a more usable format in columns where this can be anticipated and ensuring that columns are of the correct data type for example checking the categorical data column columns are categorical. This provides a dataframe that is ready for initial analysis. 
 
@@ -38,10 +40,10 @@ In this step I take a numerical and catagorical overview of the intire data set 
 
 #### Dropping overly correlated columns
 
-### Examining data
-The ```loans_payment.csv``` is loaded to a data frame.
 
 ### Analysis and Visualisation
+Now that the data has been cleaned, management would like to draw deeper insights from the data. You will dive deeper into the dataset to identify any patterns or trends not visible by your previous analysis. By gaining these deeper insights, management can make more informed decisions about which loans are higher risk to the company.
+The ```loans_payment.csv``` is loaded to a data frame.
 #### Current state of the loans
 
 #### Calculating loss
