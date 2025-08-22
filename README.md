@@ -31,13 +31,23 @@ This milestone involves performing Exploratory Data Analysis (EDA) on the loans 
 #### Check and convert columns to correct formats
 Taking the data frame extracted from the database this is an initial round of Visualising column data types. Using the ```DataTransform()``` class it involves changing column types to a more usable format in columns where this can be anticipated and ensuring that columns are of the correct data type for example checking the categorical data column columns are categorical. This provides a dataframe that is ready for initial analysis. 
 
-### Create a class to get information from the DataFrame
+### 
 
 #### Remove/impute missing values in the data
 
-#### Perform transformations on skewed columns
-In this step I take a numerical and catagorical overview of the intire data set using my ```DataFrameTransform()``` class.
+To clean the data  I create a class to get information from the DataFrame ```DataFrameInfo()```. This allows  the collection of discrptive statistics in columns of continous data and count distinct values in categorical columns. Get the shape of the DataFrame, count the NULL values in each column and sominitial visualisation ready for removing  or imputeing missing values. The DataFrame outputs calculated in these methods can exported as a text in a "github" tabular format or as a *.csv file. ID columns and date columns with high NULL values that are  not needed are removed. In colums selected by visual analysis of discriptive statics have NUKK vales replace by median or mean values.
 
+Table, Descriptive statistics for our continuous             data coumns
+
+| stat   |    term |   loan_amount |   funded_amount |   funded_amount_inv |   int_rate |   instalment |   collections_12_mths_ex_med |
+|--------|---------|---------------|-----------------|---------------------|------------|--------------|------------------------------|
+| median | 36      |      12000    |        20000    |             11300   |   19.52    |      347.15  |                   0          |
+| st_dev | 10.7195 |       8082.12 |         8018.94 |              8099.4 |    4.39285 |      238.918 |                   0.0709895  |
+| mean   | 42.6062 |      13333.1  |        13229.5  |             12952.6 |   13.5073  |      400.014 |                   0.00420819 |
+
+
+#### Perform transformations on skewed columns
+In this step I take a numerical and catagorical overview of the intire data set using my ```DataFrameTransform()``` class. 
 #### Dropping overly correlated columns
 
 
