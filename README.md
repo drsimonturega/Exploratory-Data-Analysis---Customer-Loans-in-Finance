@@ -15,32 +15,40 @@ Currently I work for a large financial institution, where managing loans is a cr
 
 ## Code development
 
-### Retreive data 
+### Seting up the environment
+We set up a conda encironment, I am including instruction of how I do this, later we may want to clone the envirnomant, ```conda create -n loans_in_fin  python=3.10```, we activate our conda environment ```conda activate loans_in_fin```. Next we install packages we will need.
+
+``` conda -c install pandas numpy psycopg2 sqlalchemy pyyaml```
+
+### Extract the loans data
 Extracting the loans data from the cloud. Initaly the ```csv_check(self, csv_name)``` method checks if the loads data *.csv is present if not it downloads it from the database, infuture this could be devloped to check for updates. Code was written to connect to cloud AWS hosted database with a python scipt using the psycopg2/sqlalchemy libraries, from the database the "loans_payments" table is extracted to a df then saved as a *csv file. 
 
  ![Alt](/init_img.png "__init_ magic method")
 
-### Check and convert columns to correct formats
+### Exploratory Data Analysis (EDA)
+#### Check and convert columns to correct formats
 Taking the data frame extracted from the database this is an initial round of Visualising column data types. Using the ```DataTransform()``` class it involves changing column types to a more usable format in columns where this can be anticipated and ensuring that columns are of the correct data type for example checking the categorical data column columns are categorical. This provides a dataframe that is ready for initial analysis. 
 
-### Getting information from dataframe
+#### Getting information from dataframe
 In this step I take a numerical and catagorical overview of the intire data set using my ```DataFrameTransform()``` class.
 
 ### Examining data
 The ```loans_payment.csv``` is loaded to a data frame.
 
-### Final data analysis and visualisation
+### Analysis and Visualisation
+#### Final data analysis and visualisation
+
 
 ## Installation instructions
 
 ### Setting up conda environment
-We set up the conda encironment, I am including instruction of how I do this, later we may want to clone the envirnomant, ```conda create -n loans_in_fin  python=3.10```, we activate our conda environment ```conda activate loans_in_fin```. Next we install packages we will need.
+We set up a conda encironment, I am including instruction of how I do this, later we may want to clone the envirnomant, ```conda create -n loans_in_fin  python=3.10```, we activate our conda environment ```conda activate loans_in_fin```. Next we install packages we will need.
 
 ``` conda -c install pandas numpy psycopg2 sqlalchemy pyyaml```
 
 ## Usage instructions
 
-The exploritory data analysis of the "lones in finance" data set, is run in a jupyter note book ```EDA.iypnb``` running python 10.6 with in a conda environment loans_in_fin. The note book is run on Microsofts VSCode on a laprunning ubuntu linux.
+The exploritory data analysis of the "lones in finance" data set, is run in a jupyter note book ```EDA.iypnb``` running python 10.6 with in a conda environment loans_in_fin. The note book is run on Microsofts VSCode on a laptop running ubuntu linux.
 
 ## File structure of the project
 
