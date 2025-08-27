@@ -35,9 +35,9 @@ Taking the data frame extracted from the database this is an initial round of Vi
 
 #### Remove/impute missing values in the data
 
-To clean the data  I create a class to get information from the DataFrame ```DataFrameInfo()```. This allows  the collection of discrptive statistics in columns of continous data and count distinct values in categorical columns. Get the shape of the DataFrame, count the NULL values in each column and sominitial visualisation ready for removing  or imputeing missing values. The DataFrame outputs calculated in these methods can exported as a text in a "github" tabular format or as a *.csv file. ID columns and date columns with high NULL values that are  not needed are removed. In colums selected by visual analysis of discriptive statics have NUKK vales replace by median or mean values.
+To clean the data  I create a class to get information from the DataFrame ```DataFrameInfo()```. This allows  the collection of discrptive statistics in columns of continous data and count distinct values in categorical columns. Get the shape of the DataFrame, count the NULL values in each column and sominitial visualisation ready for removing  or imputeing missing values. The descriptive statistics DataFrame outputs calculated in these methods can exported as a text in a "github" tabular format (eample in Table 1) or as a *.csv file. To deal with the Null values date columns with high NULL values that are  not needed are removed, in colums selected by visual analysis of discriptive statics have NUll vales replace by median or mean values.
 
-Table, Descriptive statistics for our continuous             data coumns
+Table 1, Descriptive statistics for our continuous             data coumns
 
 | stat   |    term |   loan_amount |   funded_amount |   funded_amount_inv |   int_rate |   instalment |   collections_12_mths_ex_med |
 |--------|---------|---------------|-----------------|---------------------|------------|--------------|------------------------------|
