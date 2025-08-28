@@ -47,7 +47,10 @@ Table 1, Descriptive statistics for our continuous             data coumns
 
 
 #### Perform transformations on skewed columns
-In this step I take a numerical and catagorical overview of the intire data set using my ```DataFrameTransform()``` class. 
+The skew of the coluns is idientifed ueing a meuli comun alanysis.  Applying the appropraite skew correcting fuction is achived using a Box-Cox or  Yeo-Johnson 
+transformation to give a an improved skew magnitude to the columns. The column "last_payment_amount" apears to be biphasic, the skew does 
+improve with a Yeo-Johnson correction so currently that will be apilled.
+
 #### Dropping overly correlated columns
 
 
