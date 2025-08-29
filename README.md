@@ -52,6 +52,12 @@ transformation to give a an improved skew magnitude to the columns. The column "
 improve with a Yeo-Johnson correction so currently that will be apilled.
 
 #### Dropping overly correlated columns
+Column correllation was visualised using a heat map Method ```mat_hm_corr_plot()``` from the ```Plotter()``` class, figure below shows the heat map for column correlation before analysis.
+ ![Alt](/corr_init.png "Heat map for column correlation before analysis")
+The columns most highly correlated were emited using a thersh hold of correlation ratio of 0.95, coumns owith a correlation over this thesh hold were deopped. The correlation plot post analysis and column drop is given bellow.
+ ![Alt](/corr_post.png "Heat map for column correlationpost analysis and column drop")
+
+
 
 
 ### Analysis and Visualisation
