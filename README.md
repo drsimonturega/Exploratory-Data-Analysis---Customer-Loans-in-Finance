@@ -62,11 +62,14 @@ The columns most highly correlated were emited using a thersh hold of correlatio
 
 
 ### Analysis and Visualisation
-Now that the data has been cleaned, management would like to draw deeper insights from the data. You will dive deeper into the dataset to identify any patterns or trends not visible by your previous analysis. By gaining these deeper insights, management can make more informed decisions about which loans are higher risk to the company.
-The ```loans_payment.csv``` is loaded to a data frame.
+Now that the data has been cleaned, management would like to draw deeper insights from the data. You will dive deeper into the dataset to identify any patterns or trends not visible by your previous analysis. By gaining these deeper insights, management can make more informed decisions going forwards. The currency is not clearly deffined,  a place marker the currencu Monero(XMR) 
+
 #### Current state of the loans
+The ```loans_payment.csv``` is loaded to a data frame. The current state of the loans is communicated as the percentage of the loans have been currently recovered compared to the total amount to be paid over the loans term including interest this is described using the histogram bellow. The total amount to be paid back 
 
 #### Calculating loss
+The company wants to check what percentage of loans have been a loss to the company, a plot of loan status is made to give an overview of staus of all loans in the data set.
+
 
 #### Calculating projected loss
 
