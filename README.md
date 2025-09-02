@@ -66,6 +66,7 @@ Now that the data has been cleaned, management would like to draw deeper insight
 
 #### Current state of the loans
 The ```loans_payment.csv``` is loaded to a data frame. The current state of the loans is communicated as the percentage of the loans have been currently recovered compared to the total amount to be paid over the loans term including interest this is described using the histogram bellow. 
+
 ![Alt](/current_recovery_%.png "The current state of the loans")
 
 
