@@ -78,7 +78,7 @@ The company wants to check what percentage of loans have been a loss to the comp
 #### Calculating projected loss
 As a measure of projected loss I calculate the expected loss of the loans marked as **Charged Off**. I calculate the loss in revenue these loans would have generated for the company if they had finished their term as histogram of binned % losses and a value, a total of 91342.49648743XMR was lost on the charged off loans.
 
-![Alt](/simple_loss_%.png "__init_ magic method")
+![Alt](./simple_loss_%.png "__init_ magic method")
 
 
 #### Possible loss
