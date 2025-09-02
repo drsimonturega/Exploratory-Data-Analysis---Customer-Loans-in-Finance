@@ -82,6 +82,8 @@ As a measure of projected loss I calculate the expected loss of the loans marked
 
 
 #### Possible loss
+There are customers who are currently behind with their loan payments. This subset of customers represent a risk to company revenue.I calculate the percentage do users in this bracket currently represent, the total amount of customers in this bracket and how much loss the company would incur if their status was changed to **Charged Off**. I calculate the projected loss of these loans if the customer were to finish the full loan term. Considering if customers that are late on payments converted to **Charged Off**, caculate the percentage of total expected revenue do these customers and the customers who have already defaulted on their loan.
+
 
 #### Indicators of loss
 
