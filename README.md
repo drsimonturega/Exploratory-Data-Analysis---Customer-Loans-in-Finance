@@ -62,16 +62,22 @@ The columns most highly correlated were emited using a thersh hold of correlatio
 
 
 ### Analysis and Visualisation
-Now that the data has been cleaned, management would like to draw deeper insights from the data. You will dive deeper into the dataset to identify any patterns or trends not visible by your previous analysis. By gaining these deeper insights, management can make more informed decisions going forwards. The currency is not clearly deffined,  a place marker the currencu Monero(XMR) 
+Now that the data has been cleaned, management would like to draw deeper insights from the data. You will dive deeper into the dataset to identify any patterns or trends not visible by your previous analysis. By gaining these deeper insights, management can make more informed decisions going forwards. The currency is not clearly deffined,  a place marker the currency Monero(XMR) 
 
 #### Current state of the loans
-The ```loans_payment.csv``` is loaded to a data frame. The current state of the loans is communicated as the percentage of the loans have been currently recovered compared to the total amount to be paid over the loans term including interest this is described using the histogram bellow. The total amount to be paid back 
+The ```loans_payment.csv``` is loaded to a data frame. The current state of the loans is communicated as the percentage of the loans have been currently recovered compared to the total amount to be paid over the loans term including interest this is described using the histogram bellow. 
+
+![Alt](/current_recovery_%.png "The current state of the loans")
+
 
 #### Calculating loss
 The company wants to check what percentage of loans have been a loss to the company, a plot of loan status is made to give an overview of staus of all loans in the data set.
+![Alt](/current_recovery_%.png "Heat map for column correlationpost analysis and column drop")
 
 
 #### Calculating projected loss
+As a measure of projected loss I calculate the expected loss of the loans marked as **Charged Off**. I calculate the loss in revenue these loans would have generated for the company if they had finished their term as histogram of binned % losses and a value, a total of 91342.49648743XMR was lost on the charged off loans.
+
 
 #### Possible loss
 
