@@ -82,14 +82,14 @@ As a measure of projected loss I calculate the expected loss of the loans marked
 
 
 #### Possible loss
-There are customers who are currently behind with their loan payments. This subset, 1.75% of customers represent a risk to company revenue.I calculate the percentage of users in this bracket currently represent, the total amount of customers in this bracket and how much loss the company would incur if their status was changed to **Charged Off**. 
+There are customers who are currently behind with their loan payments. This subset, 1.75% of customers represent a risk to company revenue.I calculate the percentage of users in this bracket currently represent, the total amount of customers in this bracket and how much loss the company would incur if their status was changed to **Charged Off**. presenting these possible losses as both percentages and monetry values.
 
 #### Indicators of loss
-To analyise the indicators of loss, the data was visualised the to highlight possible indicators that a customer will not be able to pay the loan. Columns which might be indicators against customers who have already stopped paying and customers who are currently behind on payments were visualised.
+To analyise the indicators of loss, the data was visualised the to highlight possible indicators that a customer will not be able to pay the loan. Columns which might be indicators against customers who have already stopped paying and customers who are currently behind on payments were visualised. The selected columns were moved to a new dfs one for late and one for gone (**Charged Off** or **Defualt**), calculations in Pandas to produce a dfs conataing a percentage score per catagory for both the late loans and the gone loans. A SQL type merge was run using pandas mergeing both df to give a single df to allowing the comparison of scores for all catagories. The data collected in the project is design for further analysis and the development of predictive models, the first step towards this is tp produce a scater plot and a place holder linear regregression lone, the export the dat as a *.csv file for analysis and modeling.
 
 
 
-#### Final data analysis and visualisation
+
 
 
 ## Installation instructions
