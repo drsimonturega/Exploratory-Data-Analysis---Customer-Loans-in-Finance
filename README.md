@@ -62,7 +62,7 @@ The columns most highly correlated were emited using a thersh hold of correlatio
 
 
 ### Analysis and Visualisation
-Now that the data has been cleaned, management would like to draw deeper insights from the data. You will dive deeper into the dataset to identify any patterns or trends not visible by your previous analysis. By gaining these deeper insights, management can make more informed decisions going forwards. The currency is not clearly deffined,  a place marker the currency Monero(XMR) 
+Now that the data has been cleaned, management would like to draw deeper insights from the data. You will dive deeper into the dataset to identify any patterns or trends not visible by your previous analysis. By gaining these deeper insights, management can make more informed decisions going forwards. The currency is not clearly deffined, a place marker the currency Monero(XMR)is used.
 
 #### Current state of the loans
 The ```loans_payment.csv``` is loaded to a data frame. The current state of the loans is communicated as the percentage of the loans have been currently recovered compared to the total amount to be paid over the loans term including interest this is described using the histogram bellow. 
@@ -82,9 +82,11 @@ As a measure of projected loss I calculate the expected loss of the loans marked
 
 
 #### Possible loss
-There are customers who are currently behind with their loan payments. This subset, 1.75% of customers represent a risk to company revenue.I calculate the percentage of users in this bracket currently represent, the total amount of customers in this bracket and how much loss the company would incur if their status was changed to **Charged Off**. There are 924 customers currently behind with their loan payments, a total of 42078.72544612XMR could be lost if these loans were charged off. I calculate the projected loss of these loans if the customer were to finish the full loan term. A total of 42078.72544612XMR could be lost if these loans were charged off, preveuosly a total of 91342.49648743XMR was lost on charged off loans. Total expected revenue is 4826049.772202907XMR. If late paying customers were charged off the loss would be 0.42% of total expected revenue, preveuosly **Charged Off** customers lost 1.89% of total expected revenue
+There are customers who are currently behind with their loan payments. This subset, 1.75% of customers represent a risk to company revenue.I calculate the percentage of users in this bracket currently represent, the total amount of customers in this bracket and how much loss the company would incur if their status was changed to **Charged Off**. There are 924 customers currently behind with their loan payments, a total of 42078.72544612XMR could be lost if these loans were charged off. I calculate the projected loss of these loans if the customer were to finish the full loan term. A total of 42078.72544612XMR could be lost if these loans were charged off, preveuosly a total of 91342.49648743XMR was lost on charged off loans. Total expected revenue is 4826049.772202907XMR. If late paying customers were charged off the loss would be 0.42% of total expected revenue, preveuosly **Charged Off** customers lost 1.89% of total expected revenue.
 
 #### Indicators of loss
+To analyise the indicators of loss, the data was visualised the to highlight possible indicators that a customer will not be able to pay the loan. Columns which might be indicators against customers who have already stopped paying and customers who are currently behind on payments were visualised.
+
 
 
 #### Final data analysis and visualisation
