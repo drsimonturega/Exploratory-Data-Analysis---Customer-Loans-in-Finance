@@ -42,6 +42,29 @@ class Plotter:
         info_here.build_stat_tab(percent_null)             
         return 
     
+    def hist_kde(self, curr_df, curr_col, x_axis_name = "value"):
+        """
+        Produces a plot of histograms with KDE
+
+        Keyword arguments:
+        self -- variables that store information unique to each 
+        object created from the class
+        curr_df -- current df as a df not string
+        curr_col -- list of columns of contiunous data
+        x_axis_name -- lable for x axis of histogram a default is set 
+        as "value"
+
+        """
+        
+        sns.histplot(data=curr_df, x=curr_col, kde=True)
+        sns.set(font_scale=0.7)
+        plt.xlabel(x_axis_name)
+        plt.ylabel('count') #change ?
+        plt.grid(True)
+        plt.show()
+    
+        return
+
     def grid_hist_kde_skew(self, curr_df, cont_lst):
         """
         Produces a grid plot of histograms with KDE
@@ -73,13 +96,16 @@ class Plotter:
         object created from the class
         curr_df -- current df as a df not string
         cont_lst -- list of columns of contiunous data
+        x_axis_name -- lable for x axis of histogram a default is set 
+        as "value"
 
         """
+        # add x axsis lable
         sns.set(font_scale=0.7)
         f = pd.melt(curr_df, value_vars=cont_lst)
         g = sns.FacetGrid(f, col="variable",  col_wrap=3, 
             sharex=False, sharey=False)
-        g = g.map(sns.histplot, "value", kde=True )
+        g = g.map_dataframe(sns.histplot, "value", kde=True, x = "test")
         return  
 
     def categ_feat(self, curr_df, cont_lst):

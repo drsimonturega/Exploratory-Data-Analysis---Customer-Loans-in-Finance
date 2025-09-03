@@ -182,8 +182,7 @@ class DataFrameInfo:
     
     def build_stat_tab(self, out_df):
         """
-        Provides a print out of a given df in a "github" tabular format
-        and saves it as a *.csv
+        Provides a print output of a given df in a "github" tabular format
 
         Keyword arguments:
         self -- variables that store information unique to each 
@@ -197,6 +196,16 @@ class DataFrameInfo:
         return
     
     def save_stat_tab(self, out_df, out_name):
+        """
+        Provides a *,csv  output of a given df 
+
+        Keyword arguments:
+        self -- variables that store information unique to each 
+        object created from the class
+        out_df -- output df for printing
+        out_name -- name for output *.csv file
+        """
+        
         try: #output results
             out_df.to_csv(f'{out_name}.csv',index=False)
         except PermissionError:
