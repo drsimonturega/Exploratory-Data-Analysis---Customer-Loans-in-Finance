@@ -45,7 +45,7 @@ Table 1, Descriptive statistics for our continuous             data coumns
 #### Perform transformations on skewed columns
 The skew of the columns is identified using a multi column analysis.  Applying the appropriate skew correcting function is achieved using a Box-Cox or  Yeo-Johnson 
 transformation to give a an improved skew magnitude to the columns. The column "last_payment_amount" apears to be biphasic, the skew does 
-improve with a Yeo-Johnson correction so currently that will be applied.
+improve with a Yeo-Johnson correction so currently that will be applied. add class, code overivew and cool code
 
 #### Dropping overly correlated columns
 Column correlation was visualised using a heat map Method ```mat_hm_corr_plot()``` from the ```Plotter()``` class, figure below shows the heat map for column correlation before analysis.
@@ -58,21 +58,21 @@ The columns most highly correlated were emitted using a thresh hold of correlati
 
 
 ### Analysis and Visualisation
-Now that the data has been cleaned, management would like to draw deeper insights from the data. You will dive deeper into the dataset to identify any patterns or trends not visible by your previous analysis. By gaining these deeper insights, management can make more informed decisions going forwards. The currency is not clearly defined, a place marker the currency Monero(XMR)is used.
+Now that the data has been cleaned, management would like to draw deeper insights from the data. You will dive deeper into the dataset to identify any patterns or trends not visible by your previous analysis. By gaining these deeper insights, management can make more informed decisions going forwards. The currency is not clearly defined, a place marker the currency Monero(XMR)is used. Dissuss use of 
 
 #### Current state of the loans
-The ```loans_payment.csv``` is loaded to a data frame. The current state of the loans is communicated as the percentage of the loans have been currently recovered compared to the total amount to be paid over the loans term including interest this is described using the histogram bellow. 
+The ```loans_payment.csv``` is loaded to a data frame. The current state of the loans is communicated as the percentage of the loans have been currently recovered compared to the total amount to be paid over the loans term including interest this is described using the histogram bellow. add class, code overivew and cool code
 
 ![Alt](/current_recovery_%.png "The current state of the loans")
 
 
 #### Calculating loss
 The company wants to check what percentage of loans have been a loss to the company, a plot of loan status is made to give an overview of status of all loans in the data set.
-![Alt](/current_recovery_%.png "Heat map for column correlation analysis and column drop")
+![Alt](/current_recovery_%.png "Heat map for column correlation analysis and column drop") add class, code overivew and cool code
 
 
 #### Calculating projected loss
-As a measure of projected loss I calculate the expected loss of the loans marked as **Charged Off**. I calculate the loss in revenue these loans would have generated for the company if they had finished their term as histogram of binned % losses and a value, a total of 91342.49648743XMR was lost on the charged off loans.
+As a measure of projected loss I calculate the expected loss of the loans marked as **Charged Off**. I calculate the loss in revenue these loans would have generated for the company if they had finished their term as histogram of binned % losses and a value, a total of 91342.49648743XMR was lost on the charged off loans. add class, code overivew and cool code
 
 ![Alt](./simple_loss_%.png "__init_ magic method")
 
@@ -81,7 +81,7 @@ As a measure of projected loss I calculate the expected loss of the loans marked
 There are customers who are currently behind with their loan payments. This subset, 1.75% of customers represent a risk to company revenue. I calculate the percentage of users in this bracket currently represent, the total amount of customers in this bracket and how much loss the company would incur if their status was changed to **Charged Off**. presenting these possible losses as both percentages and monetary values.
 
 #### Indicators of loss
-To analyse the indicators of loss, the data was visualised the to highlight possible indicators that a customer will not be able to pay the loan. Columns which might be indicators against customers who have already stopped paying and customers who are currently behind on payments were visualised. The selected columns were moved to a new dfs one for late and one for gone (**Charged Off** or **Default**), calculations in Pandas to produce a dfs containing a percentage score per category for both the late loans and the gone loans. A SQL type merge was run using pandas merging both df to give a single df to allowing the comparison of scores for all categories. The data collected in the project is design for further analysis and the development of predictive models, the first step towards this is to produce a scatter plot and a place holder linear regression lone, the export the data as a *.csv file for analysis and modelling.
+To analyse the indicators of loss, the data was visualised the to highlight possible indicators that a customer will not be able to pay the loan. Columns which might be indicators against customers who have already stopped paying and customers who are currently behind on payments were visualised. The selected columns were moved to a new dfs one for late and one for gone (**Charged Off** or **Default**), calculations in Pandas to produce a dfs containing a percentage score per category for both the late loans and the gone loans. A SQL type merge was run using pandas merging both df to give a single df to allowing the comparison of scores for all categories. The data collected in the project is design for further analysis and the development of predictive models, the first step towards this is to produce a scatter plot and a place holder linear regression lone, the export the data as a *.csv file for analysis and modelling. add class, code overivew and cool code
 
 ![Alt](/merge.png "SQL type merge in Pandas")
 
